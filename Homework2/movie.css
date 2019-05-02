@@ -11,6 +11,7 @@ body {
   background-image: url('background.png');
   font-family: verdana;
   font-size: 8px;
+  margin: 0;
 }
 
 div.banner {
@@ -47,12 +48,11 @@ div.content {
   border-radius: 20px;
   border-color: gray;
   margin: auto;
-  
 }
 
 div.reviews {
   width: 550px;
-  overflow: auto;
+  
 }
 
 div.rotten {
@@ -61,19 +61,22 @@ div.rotten {
   font-weight: bold;
   color: red;
   background-image: url('rbg.png');
-  border-top-left-radius: 20px;
+  border-top-left-radius: 17px;
 }
 
 img.rottenbig {
   vertical-align: bottom;
-  border-radius: 20px;
+  border-radius: 17px;
 }
 
+div.row {
+  padding: 1%; 
+  overflow: auto; 
+}
 div.column {
   width: 50%;
   float: left;
-  padding: 2%;
-
+  padding: 1%;
 }
 
 p.review {
@@ -86,42 +89,58 @@ p.review {
   border-radius: 10px; 
   border-color: gray;
   padding: 8px;
-  
+  clear: left;
 }
 
 img.review {
+  margin: 5px;
   float: left;
   
 }
 
 .general {
   background-image: url('overview.png');
-  border-top-right-radius: 20px;
+  border-top-right-radius: 17px;
 }
 
 img.general {
-  border-radius: 20px;
+  border-radius: 17px;
 }
 
 div.overview {
   background-color: #A2B964;
   width: 250px;
-  padding: 10px;
   font-size: 8px;
   font-family: verdana;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+
+dt {
+  padding-top: 10px;
+  font-weight: bold;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .count {
   width: 100%;
   background-color: #A2B964;
   padding: 5px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 17px;
+  border-bottom-right-radius: 17px;
   text-align: center;
 }
 
 div.validator {
-  text-align: right;
+  position: fixed;
+  bottom: 0;
+  right: 0;
 }
 
 img.validator {
