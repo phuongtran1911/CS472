@@ -1,0 +1,83 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 1, 2019, 1:39:23 PM
+    Author     : 987132
+*/
+body {
+  background-color: white;
+  background-image: url('silverware.jpg');
+  color: #404040;
+  font-family: Georgia;
+  font-size: 11px;
+}
+
+h1 {
+  color: #A4A400;
+  background-color: #F0F0F0;
+  font-family: Lucida Sans Unicode;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+} 
+h2 {
+  color: #A4A400;
+  background-color: #F0F0F0;
+  font-family: Lucida Sans Unicode;
+  font-size: 18px;
+  font-weight: normal;
+  text-align: left;
+} 
+a {
+  color: #A4A400;
+}
+ul {
+  list-style-image: url('pie-icon.gif');
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+div.comment {
+  background-color: #FFFFA8;
+}
+
