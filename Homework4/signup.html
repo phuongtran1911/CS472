@@ -20,25 +20,51 @@
         <form>
             <fieldset>
                 <legend>New User Signup:</legend>
+                <div class="column">
                     <label class="left" for="name">Name: </label> 
-                        <input type="text" name="name" maxlength="16"> <br>
+                </div>                    
+                <div>
+                    <input type="text" name="name" maxlength="16"> <br>
+                </div>        
+                <div class="column">             
                     <label class="left" for="name">Gender: </label>
-                        <input type="radio" name="gender" value="female"> Male 
-                        <input type="radio" name="gender" value="female" checked> Female <br>
+                </div>    
+                <div>               
+                    <input type="radio" name="gender" value="female"> Male 
+                    <input type="radio" name="gender" value="female" checked> Female <br>
+                </div>        
+                <div class="column">                   
                     <label class="left" for="name">Age: </label>
-                        <input type="text" name="age" size="6" maxlength="2"> <br>
+                </div>    
+                <div>                    
+                    <input type="text" name="age" size="6" maxlength="2"> <br>
+                </div>        
+                <div class="column">                        
                     <label class="left" for="name">Personality type: </label>
-                        <input type="text" name="personality" size="6" maxlength="4"> (<a href="http://www.humanmetrics.com/cgi-win/JTypes2.asp">Don't know your type?</a>)<br>
+                </div>    
+                <div>                    
+                    <input type="text" name="personality" size="6" maxlength="4"> (<a href="http://www.humanmetrics.com/cgi-win/JTypes2.asp">Don't know your type?</a>)<br>
+                </div>
+                <div class="column">                        
                     <label class="left" for="name">Favorite OS: </label>
-                        <select name="os">
-                            <option value="windows" selected>Windows</option>
-                            <option value="mac">MAC OS X</option>
-                            <option value="linux">Linux</option>
-                        </select> <br> 
+                </div>    
+                <div>                    
+                    <select name="os">
+                        <option value="windows" selected>Windows</option>
+                        <option value="mac">MAC OS X</option>
+                        <option value="linux">Linux</option>
+                    </select> <br> 
+                </div>        
+                <div class="column">                        
                     <label class="left" for="name">Seeking age: </label>
+                </div>    
+                <div>                    
                         <input type="text" name="min" size="6" maxlength="2" placeholder="min"> to 
                         <input type="text" name="max" size="6" maxlength="2" placeholder="max"> <br>
-                    <input type="submit" value="Sign Up">
+                </div>        
+                <div>                        
+                    <input type="submit" value="Sign Up"> 
+                </div>    
             </fieldset>
         </form>
         
