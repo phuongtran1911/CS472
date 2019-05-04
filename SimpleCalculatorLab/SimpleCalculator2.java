@@ -37,13 +37,13 @@ public class SimpleCalculator2 extends HttpServlet {
         String f22 = request.getParameter("field22");
         String f23 = request.getParameter("field23");
         String f24 = request.getParameter("field24");
-        if (f21 != null && f22 != null && !f21.equals("") && !f22.equals("")) {
+        if (f21 != "null" && f22 != "null" && !f21.equals("") && !f22.equals("")) {
             int n21 = Integer.parseInt(f21);
             int n22 = Integer.parseInt(f22);
             int s = n21 + n22;
             request.setAttribute("sum", s);
         }
-        if (f23 != null && f24 != null && !f23.equals("") && !f24.equals("")) {
+        if (f23 != "null" && f24 != "null" && !f23.equals("") && !f24.equals("")) {
             int n23 = Integer.parseInt(f23);
             int n24 = Integer.parseInt(f24);
             int m = n23 * n24;
