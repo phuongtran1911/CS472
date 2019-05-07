@@ -29,6 +29,7 @@ public class QuizServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession s = request.getSession();
         s.setAttribute("quiz", new Quiz());
+        s.setAttribute("hint", "");
         request.setAttribute("age", "");
         RequestDispatcher view = request.getRequestDispatcher("index.jsp");
         view.forward(request, response);
@@ -67,8 +68,7 @@ public class QuizServlet extends HttpServlet {
         } else {
             throw new NumberFormatException("You must enter your age with an integer between 4 and 100");
         }
-               
-        if (request.getParameter("submit") != null) {
+        while (request.getParameter("submit") != null && !q.questionOver()) {
             int answer = Integer.parseInt(request.getParameter("answer"));
             q.calculateScore(answer);
             if (q.quizOver()) {
@@ -82,7 +82,8 @@ public class QuizServlet extends HttpServlet {
 
             RequestDispatcher view = request.getRequestDispatcher("index.jsp");
             view.forward(request, response);
-        } else if (request.getParameter("hint") != null) {
+        }  
+        if (request.getParameter("hint") != null) {
             s.setAttribute("hint", q.getHint());
             RequestDispatcher view = request.getRequestDispatcher("index.jsp");
             view.forward(request, response);
