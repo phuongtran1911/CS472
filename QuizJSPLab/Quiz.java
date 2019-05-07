@@ -14,12 +14,14 @@ public class Quiz {
     String question;
     String grade;
     String hint;
+    int tries;
     
     public Quiz() {
         score = 0;
         question = questions[0];
         currentQuestion = 0;
         hint = "";
+        tries = 0;
     }
     
     public String getQuestion() {
@@ -31,16 +33,15 @@ public class Quiz {
     }    
     
     public boolean calculateScore(int answer){
-        int tries = 0;
         boolean result = false;
-        if(answers[currentQuestion] !=  answer && tries < 3){
+        if (answers[currentQuestion] != answer) {
             tries++;
         }
-        if(answers[currentQuestion] ==  answer && tries == 0){
+        if (answers[currentQuestion] ==  answer && tries == 0){
             score += 10;
             result = true;
         } 
-        if(answers[currentQuestion] ==  answer && tries == 1){
+        if (answers[currentQuestion] ==  answer && tries == 1){
             score += 5;
             result = true;
         } 
@@ -48,8 +49,17 @@ public class Quiz {
             score += 2;
             result = true;
         } 
-        currentQuestion++;
+        if (answers[currentQuestion] ==  answer || tries == 3) {
+            currentQuestion++;
+            tries = 0;
+        }
         return result;
+    }
+    
+    public boolean questionOver() {
+        if (tries == 3)
+            return true;
+        return false;
     }
        
     public boolean quizOver(){
@@ -77,16 +87,16 @@ public class Quiz {
     public String getHint() {
         switch (currentQuestion) {
             case 0:
-                hint = "pi";
+                return "pi";
             case 1:
-                hint = "fibonacci";
+                return "fibonacci";
             case 2:
-                hint = "squares";
+                return "squares";
             case 3:
-                hint = "primes";
+                return "primes";
             case 4:
-                hint = "powers of 2";       
+                return "powers of 2";       
         }
-        return hint;
+        return "";
     }
 }
