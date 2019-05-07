@@ -1,4 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    if(session.getAttribute("quiz") == null){
+        request.getRequestDispatcher("/QuizServlet").forward(request, response);
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,7 +12,7 @@
     </head>
     <body> 
         <h1>The Number Quiz</h1> 
-        <form method="POST" action="QuizServlet">
+        <form method="POST" action="/QuizServlet">
             Your age: <input type="text" name="age" value="<%= request.getAttribute("age") %>"> <br>
             <p>Your current score is ${quiz.score}.<br>
                     Guess the next number in the sequence.<br>
