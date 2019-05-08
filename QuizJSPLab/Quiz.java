@@ -32,34 +32,25 @@ public class Quiz {
         return score;
     }    
     
-    public boolean calculateScore(int answer){
-        boolean result = false;
-        if (answers[currentQuestion] != answer) {
+    public void calculateScore(int answer){
+        if (answers[currentQuestion] != answer && tries < 3) {
             tries++;
         }
         if (answers[currentQuestion] ==  answer && tries == 0){
             score += 10;
-            result = true;
         } 
         if (answers[currentQuestion] ==  answer && tries == 1){
             score += 5;
-            result = true;
         } 
         if(answers[currentQuestion] ==  answer && tries == 2){
             score += 2;
-            result = true;
         } 
-        if (answers[currentQuestion] ==  answer || tries == 3) {
-            currentQuestion++;
-            tries = 0;
+        if (currentQuestion <= questions.length - 1) {
+            if (answers[currentQuestion] ==  answer || tries == 3) {
+                currentQuestion++;
+                tries = 0;
+            }
         }
-        return result;
-    }
-    
-    public boolean questionOver() {
-        if (tries == 3)
-            return true;
-        return false;
     }
        
     public boolean quizOver(){
@@ -100,3 +91,4 @@ public class Quiz {
         return "";
     }
 }
+
