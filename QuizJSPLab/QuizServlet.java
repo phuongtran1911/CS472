@@ -68,18 +68,16 @@ public class QuizServlet extends HttpServlet {
         } else {
             throw new NumberFormatException("You must enter your age with an integer between 4 and 100");
         }
-        while (request.getParameter("submit") != null && !q.questionOver()) {
+        if (request.getParameter("submit") != null) {
             int answer = Integer.parseInt(request.getParameter("answer"));
             q.calculateScore(answer);
-            if (q.quizOver()) {
-                q = null;
-                RequestDispatcher view = request.getRequestDispatcher("quizOver.jsp");
-                view.forward(request, response);
-            }
-
             s.setAttribute("hint", "");
             s.setAttribute("quiz", q);
-
+            if (q.quizOver()) {
+                RequestDispatcher view = request.getRequestDispatcher("quizOver.jsp");
+                view.forward(request, response);
+                q = null;
+            }
             RequestDispatcher view = request.getRequestDispatcher("index.jsp");
             view.forward(request, response);
         }  
@@ -91,3 +89,4 @@ public class QuizServlet extends HttpServlet {
     }
 
 }
+
