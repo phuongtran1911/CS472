@@ -6,8 +6,13 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.*;
-import javax.servlet.http.*;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.jsp.PageContext;
 
 public class QuizServlet extends HttpServlet {
 
@@ -24,23 +29,52 @@ public class QuizServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        RequestDispatcher view = request.getRequestDispatcher("index.jsp"); 
-        HttpSession pres = request.getSession(false);
         HttpSession s = request.getSession();
-        Quiz q = (Quiz) s.getAttribute("quiz");
-        if (q == null) {
-            s.setAttribute("quiz", new Quiz());
+        
+        Quiz q;
+        if(s.getAttribute("quiz") != null)            
+            q = (Quiz) s.getAttribute("quiz");
+        else {
+            q = new Quiz();
+            s.setAttribute("quiz", q);  
         }
-        if (pres == null) {
-            s.setAttribute("score", 0);    
+        int answer = Integer.parseInt(request.getParameter("answer"));
+        q.calculateScore(answer);
+        s.setAttribute("quiz", q);
+        if (q.quizOver()) {
+            out.write("<!DOCTYPE html>\n");
+            out.write("<html>\n");
+            out.write("    <head>\n");
+            out.write("        <title>The Number Quiz</title>\n");
+            out.write("    </head>\n");
+            out.write("    <body> \n");
+            out.write("        <h1>The Number Quiz</h1> \n");
+            out.write("        <form method=\"POST\" action=\"QuizServlet\">\n");
+            out.write("            <p>Your current score is " + q.getScore() + ".<br>");
+            out.write("                You have completed the Number Quiz, with a score of " + q.getScore() + " out of 5.");
+            out.write("            </p>\n");
+            out.write("        </form>\n");
+            out.write("    </body>\n");
+            out.write("</html>");
+        } else {
+            out.write("<!DOCTYPE html>\n");
+            out.write("<html>\n");
+            out.write("    <head>\n");
+            out.write("        <title>The Number Quiz</title>\n");
+            out.write("    </head>\n");
+            out.write("    <body> \n");
+            out.write("        <h1>The Number Quiz</h1> \n");
+            out.write("        <form method=\"POST\" action=\"QuizServlet\">\n");
+            out.write("            <p>Your current score is " + q.getScore() + ".<br>");
+            out.write("                    Guess the next number in the sequence.<br>\n");
+            out.write(q.getQuestion() + "<br></p>");
+            out.write("            Your answer: <input type=\"text\" name=\"answer\"> <br><br>\n");
+            out.write("            <input type=\"submit\" value=\"Submit\"> \n");
+            out.write("        </form>\n");
+            out.write("    </body>\n");
+            out.write("</html>");
         }
-        s.setAttribute("question", Quiz.getQuestion(pres));
-        String a = request.getParameter("answer");
-        if (!a.equals("")) {
-            int answer = Integer.parseInt(a);
-            request.setAttribute("score", Quiz.calculateScore(pres, answer));
-        }
-        view.forward(request, response);
     }
 
 }
+
