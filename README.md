@@ -3,4 +3,4 @@ CS472-WAP
 
 Author: Minh Phuong Tran - 987132
 
-https://phuongtm1911.github.io/minhtran/
+https://phuongtm1911.github.io/CS472-WAP/
