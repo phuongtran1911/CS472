@@ -4,6 +4,25 @@
  * and open the template in the editor.
  */
 
+var rudyTimer = (function() {
+    timer = null; // stores ID of interval timer
+
+    var delayMsg = function() {
+        if (timer === null) {
+            timer = setInterval(rudy, 1000);
+        } else {
+        clearInterval(timer);
+        timer = null;
+        }
+    };
+
+    var rudy = function() {
+        document.getElementById("output").innerHTML += "Rudy!";
+    };
+
+    return delayMsg;
+})();
+
 var accountInfoList = [];
 
 function Account(name, balance) {
