@@ -45,17 +45,30 @@ function start() {
 }
 function run() {
     if (document.getElementById("animation").value === "Blank") 
-        document.getElementById("text").innerHTML = document.getElementById("text").textContent + ANIMATIONS["Blank"];            
+        runAnimation(ANIMATIONS["Blank"]);            
     if (document.getElementById("animation").value === "Custom")
-        document.getElementById("text").innerHTML = document.getElementById("text").textContent + ANIMATIONS["Custom"]; 
-    if (document.getElementById("animation").value === "Exercise")
-        document.getElementById("text").innerHTML = document.getElementById("text").textContent + ANIMATIONS["Exercise"]; 
+        runAnimation(ANIMATIONS["Custom"]); 
+    if (document.getElementById("animation").value === "Exercise") 
+        runAnimation(ANIMATIONS["Exercise"]);       
     if (document.getElementById("animation").value === "Juggler")
-        document.getElementById("text").innerHTML = document.getElementById("text").textContent + ANIMATIONS["Juggler"]; 
+        runAnimation(ANIMATIONS["Juggler"]); 
     if (document.getElementById("animation").value === "Bike")
-        document.getElementById("text").innerHTML = document.getElementById("text").textContent + ANIMATIONS["Bike"]; 
+        runAnimation(ANIMATIONS["Bike"]); 
     if (document.getElementById("animation").value === "Dive")
-        document.getElementById("text").innerHTML = document.getElementById("text").textContent + ANIMATIONS["Dive"]; 
+        runAnimation(ANIMATIONS["Dive"]); 
+}
+
+function runAnimation(animation) {
+    var a = animation.split("=====\n");
+    document.getElementById("text").innerHTML = a[0];
+    for (var i = 0; i < a.length; i++) {
+        (function() {
+            var item = a[i];
+            setTimeout(function (){
+                document.getElementById("text").innerHTML = item;  
+                }, timer);           
+        })();    
+    }
 }
 
 function stop() {
@@ -64,4 +77,3 @@ function stop() {
     document.getElementById("animation").disabled = false;
     clearInterval(interval);
 }
-
