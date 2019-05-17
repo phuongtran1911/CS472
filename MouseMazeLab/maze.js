@@ -6,8 +6,19 @@
 
 $(document).ready(function() {
     $("#start").click(function() {
-        $(".boundary").removeClass("youlose");
-        $("#status").text("Click the \"S\" to begin.");
+        if ($(".boundary").hasClass("youlose")) {
+            $(".boundary").removeClass("youlose");
+            $("#status").text("Click the \"S\" to begin.");
+        }
+        $("#status").mouseover(function() {
+            $(".boundary").addClass("youlose");
+        });
+        $("p").mouseover(function() {
+            $(".boundary").addClass("youlose");
+        });
+        $(".boundary").mouseover(function() {
+            $(".boundary").addClass("youlose");
+        });
     });
     /*$("#boundary1").mouseover(function() {
         $("#boundary1").addClass("youlose");
@@ -24,23 +35,15 @@ $(document).ready(function() {
     $("#boundary5").mouseover(function() {
         $("#boundary5").addClass("youlose");
     });*/
-    $(".boundary").mouseover(function() {
-        $(".boundary").addClass("youlose");
-    });
-    $("#maze").mouseout(function() {
-        $("#end").click(function() {
-            $(".boundary").addClass("youlose");
-        });
-    });
+    
     $("#end").click(function() {
         if ($(".boundary").hasClass("youlose")) {
-            alert("Sorry, you lost. :(");
+            //alert("Sorry, you lost. :(");
             $("#status").text("Sorry, you lost. :(");
         } else {
-            alert("You win! :)");
+            //alert("You win! :)");
             $("#status").text("You win! :)");
         } 
     });
-    
-    
+       
 });
