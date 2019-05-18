@@ -63,7 +63,6 @@ $(document).ready(function() {
 
 function shuffle() {
     var random = Math.floor(Math.random() * 100); 
-    alert(random);
     var i = 0;
     $(".puzzlepiece").each(function() {
         var bx = $(".blank").position().left;
